@@ -80,7 +80,7 @@ const char* luaL_checklstring(void* L, int arg, size_t* l)
 	const char* value = o_luaL_checklstring(L, arg, l);
 	if (!injected && lstrcmpA(value, hookRequireLua) == 0) {
 		injected = true;
-		return hookReplaceLua;
+		lstrcpyA((char*)value, hookReplaceLua);
 	}
 	return value;
 }
